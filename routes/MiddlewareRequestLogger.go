@@ -88,7 +88,7 @@ func (l *LoggerMiddleware) ServeHTTP(rw http.ResponseWriter, r *http.Request, ne
 		}
 	}()
 
-	start := time.Now()
+	/*start := time.Now()
 
 	next(rw, r)
 
@@ -105,5 +105,5 @@ func (l *LoggerMiddleware) ServeHTTP(rw http.ResponseWriter, r *http.Request, ne
 
 	buff := &bytes.Buffer{}
 	l.template.Execute(buff, log)
-	l.Printf(buff.String())
+	l.Printf(buff.String())*/
 }

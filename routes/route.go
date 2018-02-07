@@ -6,8 +6,6 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/urfave/negroni"
-
-	"github.com/nkristianto/tcp_server/interfaces"
 )
 
 // Route http request pattern

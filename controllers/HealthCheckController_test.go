@@ -9,7 +9,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/stretchr/testify/assert"
 
-	"bitbucket.org/kudoindonesia/microservice_airtime_biller_narindo/viewmodels"
+	"github.com/nkristianto/tcp_server/viewmodels"
 )
 
 func TestHeartBeat(t *testing.T) {
