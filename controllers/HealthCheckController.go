@@ -5,9 +5,7 @@ package controllers
 import (
 	"net/http"
 
-	"github.com/nkristianto/tcp_server/constants"
 	"github.com/nkristianto/tcp_server/helpers"
-	"github.com/nkristianto/tcp_server/viewmodels"
 )
 
 // HealthCheckController representation health check controller
@@ -18,7 +16,7 @@ type HealthCheckController struct {
 func (c *HealthCheckController) HeartBeat(w http.ResponseWriter, r *http.Request) {
 
 	body := &viewmodels.ServiceResponse{
-		Code:    constants.B2bAPIGeneralSuccess,
+		Code:    "1000",
 		Message: "OK",
 	}
 	helpers.APIResponse(w, 200, body)
