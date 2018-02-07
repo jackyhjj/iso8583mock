@@ -1,0 +1,62 @@
+# This is global application configuration
+app:
+  port: 8081
+  read_timeout: 5
+  write_timeout: 5
+  name: biller_connector_ptpos
+  timezone: Asia/Jakarta
+  debug: true
+  channels:
+    - WEB
+    - MOBILE
+
+#kafka configuration
+kafka:
+    broker_list: "localhost:29092"
+    topic_transaction_status: biller_connection_ptpos_transaction_status
+    topic_pending_processor : frontier_pending_processor # topic name for transaction  current request status
+    request_timeout : 5000 # in millisecond
+    consumer:
+      session_timeout: 6000 # session timeout
+      event_channel_enable: true
+      rebalance_enable: true # rebalance when multiple consumer with same group id
+      auto_commit: false
+    producer:
+      acks : 1 #ack for kafka producer
+
+#redis connection config
+redis:
+   host: localhost # set to redis ip or host
+   port: 6379
+   db: 0
+   prefix: "microservice_biller_connector_ptpos_:_" # don't change this prefix
+   cached_consume_expired: 1440 # in minutes
+   cached_inquiry_response_expired : 1440 # in minutes
+   cached_success_expired: 0 # in minutes
+
+# Kudo Billpay PT Pos Connection
+biller_ptpos:
+  server : "172.16.19.230"
+  port : "14579"
+  connection_alias: PTPOSTCP
+  merchants_type : "6013"
+  acquiring_institution_identification_code : "811"
+  primary_partner_account_number : "1000900001"
+  inquiry_topic : biller_connector_ptpos_svc.inquiry
+  payment_topic : biller_connector_ptpos_svc.payment
+  checkstatus_topic : biller_connector_ptpos_svc.checkstatus
+  fontier_update_status_topic : airtime_v2_svc.update_transaction_status
+
+#Circuit Breaker Configuration
+circuit_breaker:
+  max_partner_request_timeout: 10000
+  max_sql_request_time_out: 1500
+  db_max_concurrent_requests: 100
+  db_error_percent_threshold: 20
+
+
+log:
+    path: "./logs/"
+    format_output: text # json|text
+    level: 1 # 0= every think logging, 1=  debug level , 2=warning level, 3= error only
+    rotate: daily # daily|static,  default daily
