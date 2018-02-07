@@ -24,4 +24,5 @@ func main() {
 	}
 	infrastructures.SetConfig(cfg)
 	command.Run()
+	//dd
 }
