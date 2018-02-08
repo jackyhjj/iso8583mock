@@ -12,7 +12,7 @@ import (
 )
 
 var text = "Starting Application"
-//denny is a pig
+
 func main() {
 	// show text //
 	fmt.Println(fmt.Sprintf(text))
@@ -25,5 +25,5 @@ func main() {
 	}
 	infrastructures.SetConfig(cfg)
 	command.Run()
-	//dd
+	
 }
